@@ -3,17 +3,20 @@ from flask import request
 
 app = Flask(__name__)
 
+
 @app.route('/')
 def home():
-   return 'Hello World'
+    return 'Hello World'
+
 
 @app.route('/sum/<int:number1>/<int:number2>')
 def user(number1, number2):
-   return f"sum = {number1 + number2}!"
+    return f"sum = {number1 + number2}!"
+
 
 @app.route('/create/<user>', methods=['POST'])
 def test(user):
-   return f"POST {user}"
+    return f"POST {user}"
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -22,6 +25,16 @@ def login():
         return "POST"
     else:
         return "GET"
+
+
+address = []
+
+
+@app.route('/address', methods=['POST'])
+def adress():
+    content = request.get_json()
+    return {'status': True, 'message': 'entrée reçue'}
+
 
 # @app.route("/me")
 # def me_api():
@@ -32,5 +45,6 @@ def login():
 #         "image": url_for("user_image", filename=user.image),
 #     }
 
+
 if __name__ == '__main__':
-   app.run("127.0.0.1", port=5000, debug=True)
+    app.run("127.0.0.1", port=5000, debug=True)
