@@ -12,18 +12,21 @@ First thing, the **home** page return the content (here is "hello world")
 
 
 ![Hello World](assets/post_hellow.png)
+- Method : GET
 
 the first request is to create a **route to check the status of the server**
 
 ![Status](assets/post_status.png)
+- Method : GET
 
 Then I'm going to create a **"login" route** and if the method is "POST" I'll send back the requested information.
 
 ![Login](assets/post_login.png)
+- Method : POST
 
 Finally, let's define the **"Fake prediction" route**
 
 ![Prediction](assets/post_predict.png)
-
+- Method : GET
 
 If you want more information about the technical resolution take a look at the [Notebook](https://github.com/leersmathieu/challenge-flask-api/blob/master/main.ipynb)
