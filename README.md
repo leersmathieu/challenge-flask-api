@@ -11,12 +11,15 @@ You are intern in a company to provide AI models to their customer. Unfortunatly
 First thing, the **home** page return the content (here is "hello world")
 
 - Method : GET
+- URL : /
 
 ![Hello World](assets/post_hellow.png)
 
 the first request is to create a **route to check the status of the server**
 
 - Method : GET
+- URL : /status
+
 
 ![Status](assets/post_status.png)
 
@@ -24,6 +27,7 @@ the first request is to create a **route to check the status of the server**
 Then I'm going to create a **"login" route** and if the method is "POST" I'll send back the requested information.
 
 - Method : POST
+- URL : /login
 
 
 ![Login](assets/post_login.png)
@@ -31,6 +35,7 @@ Then I'm going to create a **"login" route** and if the method is "POST" I'll se
 Finally, let's define the **"Fake prediction" route**
 
 - Method : GET
+- URL : /predict/<*seller_avaible*>/\<*month*>/<*customer_visiting_website*>
 
 ![Prediction](assets/post_predict.png)
 
