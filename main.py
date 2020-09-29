@@ -1,12 +1,18 @@
 from flask import Flask
 from flask import request
+import random
 
 app = Flask(__name__)
 
 
 @app.route('/')
 def home():
-    return 'Hello World'
+    return "Hello World !"
+
+
+@app.route('/status')
+def status():
+    return {'server_status': "Alive!"}
 
 
 @app.route('/sum/<int:number1>/<int:number2>')
@@ -14,36 +20,18 @@ def user(number1, number2):
     return f"sum = {number1 + number2}!"
 
 
-@app.route('/create/<user>', methods=['POST'])
-def test(user):
-    return f"POST {user}"
-
-
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        return "POST"
+        content = request.get_json()
+        return f"Login success for user {content['user']} with password from length: {len(content['password'])}!"
     else:
-        return "GET"
+        return {"method": "GET"}
 
 
-address = []
-
-
-@app.route('/address', methods=['POST'])
-def adress():
-    content = request.get_json()
-    return {'status': True, 'message': 'entrée reçue'}
-
-
-# @app.route("/me")
-# def me_api():
-#     user = get_current_user()
-#     return {
-#         "username": user.username,
-#         "theme": user.theme,
-#         "image": url_for("user_image", filename=user.image),
-#     }
+@app.route('/predict/<int:seller_avaible>/<string:month>/<int:customer_visiting_website>')
+def predict(seller_avaible, month, customer_visiting_website):
+    return f"Prediction for {month} : {random.randint(2000, 5000)}"
 
 
 if __name__ == '__main__':
