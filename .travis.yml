@@ -13,11 +13,13 @@ before_script:
 script:
   # Unit testing needed
   - docker build -t leersma/challenge-flask-api:latest .
+  - docker tag leersma/challenge-flask-api:latest 146.59.145.47:5001/challenge-flask-api:latest
 
 deploy:
   provider: script
   script:
     docker push leersma/challenge-flask-api:latest;
+    docker push 146.59.145.47:5001/challenge-flask-api:latest;
 
   on:
     branch: master
