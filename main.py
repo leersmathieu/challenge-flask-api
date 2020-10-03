@@ -1,6 +1,7 @@
 from flask import Flask
 from flask import request
 import random
+import os
 
 app = Flask(__name__)
 
@@ -35,4 +36,4 @@ def predict(seller_avaible, month, customer_visiting_website):
 
 
 if __name__ == '__main__':
-    app.run("127.0.0.1", port=5000, debug=True)
+    app.run("0.0.0.0", port=int(os.environ.get("PORT", 5000)), debug=True)

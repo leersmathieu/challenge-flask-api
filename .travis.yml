@@ -1,0 +1,24 @@
+language: python
+python:
+  - 3.7
+services:
+  - docker
+
+install:
+  - pip install -r requirements.txt
+
+before_script:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin # Login to dockerhub
+
+script:
+  # Unit testing needed
+  - docker build -t leersma/challenge-flask-api:latest .
+  - docker tag leersma/challenge-flask-api:latest
+
+deploy:
+  provider: script
+  script:
+    docker push leersma/challenge-flask-api:latest;
+  
+  on:
+    branch: master
