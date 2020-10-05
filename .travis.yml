@@ -5,20 +5,18 @@ services:
   - docker
 
 install:
-  - pip install -r requirements.txt
+  - pip install -r requirements.txt # for dependencies
 
 before_script:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin # Login to dockerhub
 
 script:
-  # Unit testing needed
-  - docker build -t leersma/challenge-flask-api:latest .
-  - docker tag leersma/challenge-flask-api:latest 146.59.145.47:5001/challenge-flask-api:latest
+  # Unit testing needed here
+  - docker build -t leersma/challenge-flask-api:latest . # building images with tag (-t)
 
 deploy:
   provider: script
   script:
-    docker push leersma/challenge-flask-api:latest;
-
+    docker push leersma/challenge-flask-api:latest; # pushing on docker hub
   on:
-    branch: master
+    branch: master # Only if branch is "master"
